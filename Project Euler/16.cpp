@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-
 int main() {
 	char A[350] = {0};
 	int n = 1;

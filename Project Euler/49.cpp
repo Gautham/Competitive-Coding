@@ -1,37 +1,11 @@
-#include <iostream>
-#include <math.h>
-#include <bitset>
-#include <algorithm>
-#include <vector>
+#include <bits/stdc++.h>
+#define PRLIMIT 10000
+#include "Primes.h"
 using namespace std;
 
-bitset<10001> PrimeBits;
-vector<int> Primes;
-int PrimeCount;
-
-bool isPrime(long long p) {
-	if (p <= 1) return false;
-	if (p <= Primes[PrimeCount - 1]) return PrimeBits[p];
-	long long n = sqrt(p) + 1, i;
-	for (i = 0; i < PrimeCount && Primes[i] < n && p % Primes[i]; ++i);
-	if (i == PrimeCount || Primes[i] >= n) return true;
-}
-
 int main() {
-	Primes.push_back(2);
-	PrimeCount = 1;
-	PrimeBits.flip();
-	PrimeBits[0] = PrimeBits[1] = PrimeBits[4] = false;
-	for (int i = 4; i < 10000; i += 2) PrimeBits[i] = false;
-	for (int i = 3; i < 10000; i += 2) {
-		if (PrimeBits[i]) {
-			Primes.push_back(i);
-			++PrimeCount;
-			for (int j =  3 * i; j < 10000; j += 2 * i) {
-				PrimeBits[j] = false;
-			}
-		}
-	}
+	InitializePrimes(PRLIMIT);
+
 	int i = 20;
 	int A[4];
 	while (Primes[++i] < 1000);
@@ -44,7 +18,7 @@ int main() {
 		do {
 			int N = A[0] * 1000 + A[1] * 100 + A[2] * 10 + A[3];
 			if (N == X || N == Y || N == Z) continue;
-			if (PrimeBits[N]) {				
+			if (isPrime(N)) {				
 				if (Y) Z = N;
 				else Y = N;
 			}

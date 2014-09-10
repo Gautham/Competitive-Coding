@@ -1,40 +1,17 @@
-#include <iostream>
-#include <math.h>
-#include <vector>
+#include <bits/stdc++.h>
+#define PRLIMIT 65536
+#include "Primes.h"
 using namespace std;
-vector<int> Primes;
-int PrimeCount;
 
-bool isPrime(int p) {
-	int n = sqrt(p) + 1, i;
-	for (i = 0; i < PrimeCount && Primes[i] < n && p % Primes[i]; ++i);
-	return (p % Primes[i]) ? true : false;
 
-}
 int main() {
-	Primes.push_back(2);
-	Primes.push_back(3);
-	Primes.push_back(5);
-	Primes.push_back(7);
-	PrimeCount = 4;
-	for (int i = 11; ; i += 6) {
-		int j = i + 2;
-		if (isPrime(i)) {
-			Primes.push_back(i);
-			++PrimeCount;
-			if (i >= 65536) break;
-		}
-		if (isPrime(j)) {
-			Primes.push_back(j);
-			++PrimeCount;
-			if (j >= 65536) break;
-		}
-	}
+	InitializePrimes(PRLIMIT);
+
 	int n = 28, d = 8;
 	while (1) {
 		int bak = n;
 		vector<int> PF;
-		for (int i = 0; i < PrimeCount; ++i) {
+		FORi(i, 0, PrimeCount) {
 			int z = 0;
 			while (n % Primes[i] == 0) {
 				++z;
@@ -46,8 +23,8 @@ int main() {
 		n = bak;
 		if (!PF.empty()) {
 			int t = PF.size(), f = 1;
-			for (int i = 0; i < t; ++i) {
-				f *= PF[i];
+			FORi(i, 0, t) {
+				f *= PF[i];				
 			}
 			if (f > 500) {
 				cout<<n;

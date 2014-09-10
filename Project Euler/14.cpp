@@ -12,7 +12,7 @@ int main() {
 		long long t = p;
 		q = 1;
 		while ((t & (t - 1)) || t >= 1000000) {
-			t = (t % 2) ? (3 * t + 1) : (t / 2);
+			t = (t % 2 == 0) ? (t / 2) : (3 * t + 1);
 			if (t < p) {
 				q += A[t];
 				t = 0;

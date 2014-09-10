@@ -4,8 +4,10 @@ using namespace std;
 
 int isPrime(int p) {
 	int n = sqrt(p) + 1;
-	for (int i = 2; i < n; ++i) {
-		if (!(p % i)) return false;
+	if (p & 1) {
+		for (int i = 3; i < n; i += 2) {
+			if (!(p % i)) return false;
+		}
 	}
 	return true;
 }

@@ -8,7 +8,7 @@ int getDigit(int n) {
 	if (n < 190) {
 		int t = (n - 8) / 2;
 		t += 9;
-		if (n % 2) {
+		if (n % 2 == 0) {
 			return (t % 10);
 		} else {
 			return (t / 10);
