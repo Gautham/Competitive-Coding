@@ -7,8 +7,11 @@
 #define FORe(i, a, n) for (i = a; i <= n; ++i)
 #define FORi(i, a, n) for (int i = a; i < n; ++i)
 #define FORie(i, a, n) for (int i = a; i <= n; ++i)		
+#define FastIO ios_base::sync_with_stdio(false); cin.tie(0);
+#define endl '\n'
 using namespace std;
 
 int main() {
+	FastIO
 	return 0;
 }
